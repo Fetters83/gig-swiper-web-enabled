@@ -91,7 +91,7 @@ function fetchArtistId(spotifyToken, requiredArtistsName) {
         return getRequiredArtistId(requiredArtistsName, artists)
     })
     .catch((error) => {
-        return new Promise.reject(error)
+        return Promise.reject(error)
     })
 }
 
@@ -103,7 +103,7 @@ function getRequiredArtistId(requiredArtistsName, artists) {
     if (matchingArtist.length > 0) {
         return matchingArtist[0].id
     } else {
-        return new Promise.reject("no matching artist found")
+        return Promise.reject("no matching artist found")
     }
 }
 

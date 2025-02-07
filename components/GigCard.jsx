@@ -111,9 +111,9 @@ export function GigCard(props) {
         :
         (<View style={[styles.container, styles.shadow]}>
           <View style={[styles.row, styles.topArea, styles.height50]}>
-            <View style={[styles.imageView, styles.shadowHeavy]}>
-              {spotifyTrack ? <SpotifyPreview spotifyTrack={spotifyTrack} style={{borderRadius: 1, marginLeft: 10}}/>: <Image style={styles.cardImage} source={{ uri: imageurl }} />} 
-            </View>
+             <View style={[styles.imageView, styles.shadowHeavy]}>
+            {spotifyTrack ? <SpotifyPreview spotifyTrack={spotifyTrack} style={{borderRadius: 1, marginLeft: 10}}/>: <Image style={styles.cardImage} source={{ uri: imageurl }} />}  
+            </View> 
           </View>
           <View style={[styles.row, styles.gigText, styles.height30, styles.column]}>
             {isEitherClicked ? 
