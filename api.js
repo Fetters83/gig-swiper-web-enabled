@@ -129,14 +129,18 @@ function fetchArtistTopTracks(spotifyToken, artistId) {
 
 export function getArtistTopTrack(artistName) {
     return fetchArtistId(spotifyToken, artistName)
-    .then((artistId) => {
-        return fetchArtistTopTracks(spotifyToken, artistId)
-    })
-    .then(({ topTracks }) => {
-        let topTrack = topTracks[0]
-        return topTrack
-    })
-    .catch((error) => {
-        console.log('getArtistTopTrack error caught:', error);
-    })
+        .then((artistId) => {
+            return fetchArtistTopTracks(spotifyToken, artistId);
+        })
+        .then(({ topTracks }) => {
+            if (!topTracks || topTracks.length === 0) {
+                return Promise.reject(new Error("No top tracks found"));
+            }
+            return topTracks[0]; // ✅ Return the first top track
+        })
+        .catch((error) => {
+            console.error("getArtistTopTrack error caught:", error);
+            return Promise.reject(error); // ✅ Properly reject the Promise
+        });
 }
+
